@@ -5,7 +5,11 @@ const cors = require('cors');
 const app = express();
 const multer = require('multer')
 
-app.use(cors());
+app.use(cors({ origin: [
+  'http://localhost:19006',
+  'exp://192.168.1.154:19006',
+  'ws://localhost:19006/_expo/ws'
+] }));
 
 // Getting variables from dotenv
 require('dotenv').config();
@@ -91,8 +95,8 @@ app.post('/upload_products', upload.single('file'), async (req, res) => {
 });
 
 const options = {
-  key: fs.readFileSync('./certs/key.pem'),
-  cert: fs.readFileSync('./certs/cert.pem'),
+  key: fs.readFileSync('./certs/my-ss-key.pem'),
+  cert: fs.readFileSync('./certs/my-ssl-cert.pem'),
   passphrase: process.env.PEM_PASSWORD
 };
 

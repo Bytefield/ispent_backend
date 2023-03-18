@@ -14,6 +14,6 @@ COPY . .
 
 COPY ./certs /app/certs
 
-EXPOSE 3000
+EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start_dev"]
